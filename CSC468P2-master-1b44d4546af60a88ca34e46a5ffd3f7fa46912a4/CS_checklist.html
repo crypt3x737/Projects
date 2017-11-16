@@ -1,0 +1,76 @@
+<!--
+	File: CS_checklist.html
+
+	Author: Kenneth Petry
+
+	Description: This files contains the html text to generate the login screen. 
+				It diplays a title and text box for the user to enter their
+				student id. There is a password text box but it is not used. Once
+				the user clicks submit the program then hands off to classDisplay.php
+-->
+<DOCTYPE! html>
+<html>
+<head>
+	<title>Login</title>
+	<style type = "text/css">
+		p.bdy 
+		{ 
+			text-align: center; 
+		}
+	</style>
+
+	<link rel = "stylesheet" type = "text/css" href = "styles.css" />
+</head>
+
+<body>
+	<p class = "header">
+		
+		<img src="sdsmt.jpg" alt="sdsmt.edu" width="100" height="128.5" align="left">
+		<br />
+        <br />
+        <br />
+		<b>Advising Tool</b>	
+		<br />
+        <br />
+        <br />
+		<br/>
+	</p>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+
+	<form name = "login" action = "classDisplay.php" method = "post">
+	<p class = "body">
+		<table align="center" >
+			<tr>
+				<td> <label for = "uname"  text-align: middle>Student ID: </label>  </td>
+				<td> <input type = "text" name = "uname" text-align: middle> </td>
+			</tr>
+			<tr>
+				<td> <label for = "pword">Password:</label> </td>
+				<td> <input type = "password" name = "pword"> </td>
+			</tr>
+			<tr>
+			</tr>
+			<tr /><tr /><tr /><tr /><tr /><tr /><tr />
+			
+			<tr>
+			    <td></td>
+				<td align='center'> <input type = "submit" value = "Submit"> </td>
+			</tr>
+		</table>
+	</p>
+	</form>
+	<br/>
+	<br/>
+	<br/>
+	
+	<p class = "footer">
+		<br />
+		<br />
+	</p>
+	
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+p.header
+{
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	background-color: #011c4f;
+	color: white;
+}
+
+p.footer
+{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	background-color: #011c4f;
+	color: white;
+}
+
+.body td
+{
+    color:#339;
+    font-weight:bold;
+}
+
+p.headerInfo
+{
+	text-align: left;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	background-color: #958962;
+	color: black;
+}
+
+label.headerInfoItem
+{
+	margin-left: 10px;
+}
+
+div.saveButton
+{
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	background-color: #958962;
+	color: black;
+
+}
+
+input.saveButton
+{
+	background: #011c4f;
+	color: white;
+	text-align: center;
+	border: none;
+}
+
+.classTable option
+{
+    font-family:"DejaVu Serif";
+    font-size:15px; 
+    font-weight: bold;
+    color:#669;
+    border-top:1px solid #e8edff;
+    border-bottom:1px solid #e8edff;
+    padding:10px 10px;
+}
+
+.classTable tr
+{
+    height: auto;
+      border: 1px solid black;
+}
+
+.classTable td
+{
+    text-align: center;
+    width: 20px;
+    font-weight: bold;
+    color:#669;
+    border-top:1px solid #e8edff;
+    border-bottom:1px solid #e8edff;
+    padding:10px 10px;
+}.oce-first{background:#d0dafd;}
+
+tr, td.classItem
+{
+    width: auto;
+}
+
+.classTable th
+{
+    height:auto;
+    text-align:center;
+    background-color:#b9c9fe;
+
+}
+
+.classTable tr:hover td
+{
+    background:#d0dafd;
+    color:#339;
+}
+

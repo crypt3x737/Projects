@@ -1,0 +1,28 @@
+
+Project 2 Grading
+	
+firebase login: mobdevsdsmt@gmail.com
+firebase password: collegeisexpensive
+
+Group Name:  Coughlen, Singh, Toregersen
+individual assignmnets:
+   sequencng: Cheldon Coughlen
+   upload: Akshay Singh
+   download: Leif Torgersen
+   monitor: NA
+
+CHECKPOINT:
+Any special instructions on loggin in: username is email, password 6+ characters
+how far into the game can I get: waiting screen
+
+   Checklist:
+   __x__ The opening/login activity and the new user activity.
+   __x__ The ability to create a user
+   __x__ The ability for the user to log into the system.
+   __x__ move to the wait activity
+   __x__ GitLab is up and I have access
+   __x__ Firebase database structure (attached document)
+   __NA__ monitor activity layout prototyped
+
+FINAL:
+   Please list any tasks not completed:

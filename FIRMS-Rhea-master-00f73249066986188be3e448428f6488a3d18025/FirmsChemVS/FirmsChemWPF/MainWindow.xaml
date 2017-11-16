@@ -1,0 +1,405 @@
+﻿<Window x:Class="FirmsChemVS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:DV="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        xmlns:local="clr-namespace:FirmsChemVS"
+        mc:Ignorable="d"
+        Title="Fast Isotope Ratio Mass Spectrometry"
+        Height="700"
+        Width="1150"
+        MinHeight="700"
+        MinWidth="1150">
+    <Window.Resources>
+        <local:CountToBooleanConverter x:Key="CountToBooleanConverter"/>
+    </Window.Resources>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Margin="10,0,0,0"
+                   HorizontalAlignment="Center"
+                   Content="Compound Name"/>
+                <TextBox Name="txbCompoundName"
+                     Grid.Row="1"
+                     Grid.Column="0"
+                     Margin="10,0,0,10"
+                     Width="200"
+                     HorizontalAlignment="Stretch">
+                    <TextBox.ToolTip>
+                        <ToolTip>
+                            <StackPanel>
+                                <TextBlock>Enter the name of the chemical compound here</TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </TextBox.ToolTip>
+                </TextBox>
+
+                <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Margin="10,0,0,0"
+                   HorizontalAlignment="Center"
+                   Content="Molecular Formula"/>
+                <TextBox Name="txbMolecularFormula"
+                     Grid.Row="1"
+                     Grid.Column="1"
+                     Margin="10,0,0,10"
+                     Width="150"
+                     HorizontalAlignment="Stretch"
+                     KeyDown="txbMolecularFormula_KeyDown" TextChanged="txbMolecularFormula_TextChanged">
+                    <TextBox.ToolTip>
+                        <ToolTip>
+                            <StackPanel>
+                                <TextBlock>Enter the formula of the compound here</TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </TextBox.ToolTip>
+                </TextBox>
+
+                <Label Grid.Row="0"
+                   Grid.Column="2"
+                   Margin="10,0,0,0"
+                   HorizontalAlignment="Center"
+                   Content="Molecular Weight"/>
+                <TextBox Name="txbMolecularWeight"
+                     Grid.Row="1"
+                     Grid.Column="2"
+                     Margin="10,0,0,10"
+                     Width="150"
+                     HorizontalAlignment="Stretch">
+                    <TextBox.ToolTip>
+                        <ToolTip>
+                            <StackPanel>
+                                <TextBlock>Enter the total weight of the compound here</TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </TextBox.ToolTip>
+                </TextBox>
+
+                <StackPanel Grid.Row="1"
+                        Grid.Column="3"
+                        Orientation="Horizontal">
+                    <Button Name="btnDeleteRow"
+                        Margin="10,0,0,10"
+                        Height="20"
+                        Width="20"
+                        Content="-"
+                        IsEnabled="{Binding Path=IonMassCount, Converter={StaticResource CountToBooleanConverter}}"
+                        Click="btnDeleteRow_Click">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>Delete last row of input</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Name="btnAddRow"
+                        Margin="10,0,0,10"
+                        Height="20"
+                        Width="20"
+                        Content="+"
+                        Click="btnAddRow_Click">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>Add a new row for input</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Name="btnLoadBaseIon"
+                        Margin="10,0,10,10"
+                        Width="100"
+                        Height="20"
+                        Content="Load Base Ion"
+                        Click="btnLoadBaseIon_Click">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>Insert a row with the Base Ion Mass information already entered</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                </StackPanel>
+
+                <DataGrid Name="dgElementGrid"
+                      Grid.Row="2"
+                      Grid.Column="0"
+                      Margin="10,0,0,0"
+                      Width="200"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      CanUserReorderColumns="False"
+                      CanUserSortColumns="False"
+                      CanUserResizeColumns="False"
+                      CanUserResizeRows="False"
+                      ColumnWidth="*"
+                      VerticalScrollBarVisibility="Disabled"
+                      ScrollViewer.CanContentScroll="False" SelectionChanged="dgElementGrid_SelectionChanged">
+                    <DataGrid.ToolTip>
+                        <TextBlock>Input the original element(s) and number of atoms in each element to form compound here</TextBlock>
+                    </DataGrid.ToolTip>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Elements" Binding="{Binding Symbol}" IsReadOnly="True">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Count" Binding="{Binding Count}">
+                            <!--    <DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="ToolTip" Value="{Binding Count}"></Setter>
+                            </Style>
+                        </DataGridTextColumn.CellStyle> -->
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <DataGrid Name="dgIonMassGrid"
+                      Grid.Row="2"
+                      Grid.Column="1"
+                      Grid.ColumnSpan="3"
+                      Margin="10,0,0,0"
+                      Width="530"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      CanUserReorderColumns="False"
+                      CanUserSortColumns="False"
+                      CanUserResizeColumns="False"
+                      CanUserResizeRows="False" SelectionChanged="dgIonMassGrid_SelectionChanged">
+                    <DataGrid.ToolTip>
+                        <TextBlock>Base isotopes data</TextBlock>
+                    </DataGrid.ToolTip>
+                    <DataGrid.CommandBindings>
+                        <CommandBinding Command="{x:Static ApplicationCommands.Paste}" CanExecute="OnCanExecutePaste" Executed="OnExecutedPaste"/>
+                    </DataGrid.CommandBindings>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="*"
+                                        Header="Base Ion Mass"
+                                        Binding="{Binding BaseIonMass}"/>
+                        <DataGridTextColumn Width="*"
+                                        Header="Daughter Ion Mass"
+                                        Binding="{Binding DaughterIonMass}"/>
+                        <DataGridTextColumn Width="*" Header="Abundance"
+                                        Binding="{Binding Abundance}"/>
+                        <DataGridTextColumn Width="*" Header="Alpha"
+                                        IsReadOnly="True"
+                                        Binding="{Binding Alpha, Mode=TwoWay}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <DVC:Chart Name="mcChart" Grid.Column="4" Margin="10,10,10,46" Background="LightSteelBlue" Grid.RowSpan="3">
+                    <DVC:Chart.Series>
+                        <DVC:ColumnSeries Title="Experimental" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}"/>
+                        <DVC:ColumnSeries Title="Calculated" IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}"/>
+                    </DVC:Chart.Series>
+                    <DVC:Chart.ToolTip>
+                        <TextBlock>Experimental vs calculated graph</TextBlock>
+                    </DVC:Chart.ToolTip>
+                </DVC:Chart>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Row="0"
+                        Grid.Column="0"
+                        Orientation="Horizontal">
+                    <Button Name="btnImportExcel"
+                        Margin="10,10,0,10"
+                        Width="100"
+                        Height="25"
+                        Content="Import Excel"
+                        Click="btnImportExcel_Click">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>Allows importation of data from Excel spreadsheet</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+
+                    <Button Name="btnExportExcel"
+                        Margin="10,10,10,10"
+                        Width="100"
+                        Height="25"
+                        Content="Export Excel"
+                        Click="btnExportExcel_Click">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>Allows data to be exported to Excel spreadsheet</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+
+                    <Button Name="btnProcessInformation"
+                        Margin="0,10,10,10"
+                        Width="125"
+                        Height="25"
+                        Content="Process Information"
+                        Click="btnProcessInformation_Click">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>Combine information from main input and chemical compound in following grid</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+
+                    <Button Name="btnCalculateAbundance"
+                        Margin="0,10,10,10"
+                        Width="125"
+                        Height="25"
+                        Content="Calculate Abundance"
+                        Click="btnCalculateAbundance_Click">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>Calculates the abundance from the input in the following grid</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+
+                    <Button Name="btnSpectrum"
+                        Margin="0,10,10,10"
+                        Width="125"
+                        Height="25"
+                        Content="Spectrum"
+                        Click="btnSpectrum_Click">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>Place data in graph</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Name="btnExptGraph"
+                        Margin="0,10,10,10"
+                        Width="125"
+                        Content="Export Graph"
+                        Click="btnExptGraph_Click">
+                        <Button.ToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock>Save the graph as a bitmap</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1"
+                        Grid.Column="0"
+                        Orientation="Horizontal">
+                    <Label Margin="0,0,10,10"
+                       VerticalAlignment="Center"
+                       Content="Compound Base Mass"/>
+
+                    <TextBox Margin="0,0,0,10"
+                         VerticalContentAlignment="Center"
+                         Width="200">
+                        <TextBox.ToolTip>
+                        <TextBlock></TextBlock>
+                        </TextBox.ToolTip>
+                    </TextBox>
+
+                    <Label Margin="0,0,10,10"
+                       VerticalAlignment="Center"
+                       Content="Fragment in MS Base of Compound"/>
+
+                    <TextBox Margin="0,0,0,10"
+                         VerticalContentAlignment="Center"
+                         Width="200">
+                        <TextBox.ToolTip>
+                        <TextBlock></TextBlock>
+                        </TextBox.ToolTip>
+                    </TextBox>
+
+                    <Label Margin="0,0,10,10"
+                       VerticalAlignment="Center"
+                       Content="Isotope with available MS data"/>
+
+                    <TextBox Margin="0,0,0,10"
+                         VerticalContentAlignment="Center"
+                         Width="200">
+                        <TextBox.ToolTip>
+                        <TextBlock></TextBlock>
+                        </TextBox.ToolTip>
+                    </TextBox>
+                </StackPanel>
+            </Grid>
+
+            <DataGrid Name="dgIsotopeGrid" Grid.Row="2"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="3"
+                  Margin="10,0,10,10"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  CanUserReorderColumns="False"
+                  CanUserSortColumns="False"
+                  CanUserResizeColumns="False"
+                  CanUserResizeRows="False" SelectionChanged="dgIsotopeGrid_SelectionChanged">
+                <DataGrid.ToolTip>
+                    <TextBlock>Parent ion isotope data</TextBlock>
+                </DataGrid.ToolTip>
+                <DataGrid.CommandBindings>
+                    <CommandBinding Command="{x:Static ApplicationCommands.Paste}" CanExecute="OnCanExecutePaste" Executed="OnExecutedPaste"/>
+                </DataGrid.CommandBindings>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="*" Header="Isotope Formula" Binding="{Binding IsotopeFormula}" IsReadOnly="True">
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Width="*" Header="Parent Ion Mass" Binding="{Binding ParentIonMass}"/>
+                    <DataGridTextColumn Width="*" Header="Daughter Ion Mass" Binding="{Binding DaughterIonMass}"/>
+                    <DataGridTextColumn Width="*" Header="Abundance" Binding="{Binding Abundance}"/>
+                    <DataGridTextColumn Width="*" Header="Number of Isotopes" Binding="{Binding NumOfIsotopoes}"/>
+                    <DataGridTextColumn Width="*" Header="Calculated Abundance" Binding="{Binding CalculatedAbundance}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+</Window>

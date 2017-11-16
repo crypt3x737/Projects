@@ -1,0 +1,9 @@
+<?xml version = "1.0" encoding "utf-8" ?>
+
+<!-- user.dtd - document type definition for (username).xml -->
+
+<!ELEMENT user (course+)>
+<!ELEMENT course (prefix, number, grade)>
+<!ELEMENT prefix (#PCDATA)>
+<!ELEMENT number (#PCDATA)>
+<!ELEMENT grade (#PCDATA)>

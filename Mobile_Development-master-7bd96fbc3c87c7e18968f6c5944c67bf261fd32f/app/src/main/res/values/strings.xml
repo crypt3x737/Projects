@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Risk Variant</string>
+    <string name="player1">Player1</string>
+    <string name="player2">Player2</string>
+    <string name="rounds">Rounds</string>
+    <string name="welcome">Welcome</string>
+    <string name="start">Start</string>
+    <string name="SingleSelectText"><b>Guaranteed Collect</b>\nCollect one guaranteed area piece</string>
+    <string name="LineSelectText"><b>Line</b>\nCollect area underneath the line at a 50 percent collection chance</string>
+    <string name="RectangleSelectText"><b>Rectangle</b>\nCollect area underneath the rectangle. The larger the rectangle the lower than 50 percent collection chance</string>
+    <string name="start_turn">Start Turn</string>
+    <string name="PlayerLabel">Player:</string>
+    <string name="RoundLabel">Round:</string>
+    <string name="MethodLabel">Method:</string>
+    <string name="capture_button">Capture</string>
+    <string name="GameComplete">Game Completed!</string>
+    <string name="GuaranteedCollect">Guaranteed Collect</string>
+    <string name="Line">Line</string>
+    <string name="Rectangle">Rectangle</string>
+    <string name="Error">Error</string>
+    <string name="BackButtonEndGameTitle">End Game?</string>
+    <string name="BackButtonEndGameContent">Are you sure you want to end the game?</string>
+    <string name="DialogOkButton">OK</string>
+    <string name="DialogCancelButton">Cancel</string>
+    <string name="RoundLabelText">%1$d of %2$d</string>
+    <string name="GameEndTie">It\'s a tie!</string>
+    <string name="GameEndWon">%1$s won the game!</string>
+</resources>

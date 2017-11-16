@@ -1,0 +1,21 @@
+Bug Report
+Type of Bug: Crash
+Version/Sprint: Sprint 3 - WPF Project
+	Most Recent GitLab Commit ID:   c1797518
+Date of Report: March 29, 2016 11:51 PM
+System Information:
+	Windows 10
+	Visual Studio 2015
+	Running Backgroun Programs:
+		Chrome with more tabs open than I care to count (roughly 20)
+How to get to Bug:  As near as I am aware, this bug occurs without having to mess with the program too much.  I did add a few rows in the
+large center datagrid view (about five rows) and also clicked the "Load Isotopes" button 3 times.  I also triggered the
+calculation of abundances.  These were all of value "NaN"
+Description of Bug:  When the "Calculate Abundance button is clicked, the program immediately opens a window which says that WPF
+has quit working with a load bar.  Given a few seconds the program then closes.  
+
+Additional Information: March 30, 2016 12:18 AM
+	When attempting to enter the BrO3 data provided in BrO3Testing_corrected2.xlsx
+	I entered the 127 information in the main entry grid in the middle.  I then clicked "Process Information" which then transferred data
+	to the large DataGridView at the bottom of the screen.  I then attempted to enter the 129 data here.
+	When I clicked the "Calculate Abundance" the same pop-up box appeared the program crashed similarly.  

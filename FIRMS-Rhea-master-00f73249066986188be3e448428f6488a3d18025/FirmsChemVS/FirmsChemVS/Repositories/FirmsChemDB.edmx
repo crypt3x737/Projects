@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FirmsChemDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Compounds">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="compoundName" Type="varchar" MaxLength="50" />
+          <Property Name="molecularFormula" Type="varchar" MaxLength="50" />
+          <Property Name="molecularWeight" Type="float" />
+          <Property Name="compoundBaseMass" Type="float" />
+          <Property Name="fragmentMsCompound" Type="nchar" MaxLength="10" />
+          <Property Name="carbon" Type="int" />
+          <Property Name="hydrogen" Type="int" />
+          <Property Name="nitrogen" Type="int" />
+          <Property Name="oxygen" Type="int" />
+          <Property Name="bromine" Type="int" />
+          <Property Name="iodine" Type="int" />
+          <Property Name="sulfur" Type="int" />
+          <Property Name="phosphorus" Type="int" />
+          <Property Name="chlorine" Type="int" />
+          <Property Name="silicon" Type="int" />
+          <Property Name="flourine" Type="int" />
+          <Property Name="compoundData" Type="xml" />
+        </EntityType>
+        <EntityType Name="Isotope">
+          <Key>
+            <PropertyRef Name="isotopeId" />
+          </Key>
+          <Property Name="isotopeId" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="isotopeNumber" Type="int" />
+          <Property Name="atomMass" Type="float" />
+          <Property Name="abundance" Type="float" />
+          <Property Name="atomSymbol" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="isotopeId" />
+          </Key>
+          <Property Name="isotopeId" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="isotopeNumber" Type="int" />
+          <Property Name="atomMass" Type="float" />
+          <Property Name="abundance" Type="float" />
+        </EntityType>
+        <EntityContainer Name="FirmsChemDBModelStoreContainer">
+          <EntitySet Name="Compounds" EntityType="Self.Compounds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Isotope" EntityType="Self.Isotope" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FirmsChemDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FirmsChemDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Compounds" EntityType="FirmsChemDBModel.Compound" />
+          <EntitySet Name="Isotopes" EntityType="FirmsChemDBModel.Isotope" />
+          <EntitySet Name="Tables" EntityType="FirmsChemDBModel.Table" />
+        </EntityContainer>
+        <EntityType Name="Compound">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="compoundName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="molecularFormula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="molecularWeight" Type="Double" />
+          <Property Name="compoundBaseMass" Type="Double" />
+          <Property Name="fragmentMsCompound" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="carbon" Type="Int32" />
+          <Property Name="hydrogen" Type="Int32" />
+          <Property Name="nitrogen" Type="Int32" />
+          <Property Name="oxygen" Type="Int32" />
+          <Property Name="bromine" Type="Int32" />
+          <Property Name="iodine" Type="Int32" />
+          <Property Name="sulfur" Type="Int32" />
+          <Property Name="phosphorus" Type="Int32" />
+          <Property Name="chlorine" Type="Int32" />
+          <Property Name="silicon" Type="Int32" />
+          <Property Name="flourine" Type="Int32" />
+          <Property Name="compoundData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Isotope">
+          <Key>
+            <PropertyRef Name="isotopeId" />
+          </Key>
+          <Property Name="isotopeId" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isotopeNumber" Type="Int32" />
+          <Property Name="atomMass" Type="Double" />
+          <Property Name="abundance" Type="Double" />
+          <Property Name="atomSymbol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="isotopeId" />
+          </Key>
+          <Property Name="isotopeId" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isotopeNumber" Type="Int32" />
+          <Property Name="atomMass" Type="Double" />
+          <Property Name="abundance" Type="Double" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FirmsChemDBModelStoreContainer" CdmEntityContainer="FirmsChemDBEntities">
+        <EntitySetMapping Name="Compounds">
+            <EntityTypeMapping TypeName="FirmsChemDBModel.Compound">
+              <MappingFragment StoreEntitySet="Compounds">
+                <ScalarProperty Name="compoundData" ColumnName="compoundData" />
+                <ScalarProperty Name="flourine" ColumnName="flourine" />
+                <ScalarProperty Name="silicon" ColumnName="silicon" />
+                <ScalarProperty Name="chlorine" ColumnName="chlorine" />
+                <ScalarProperty Name="phosphorus" ColumnName="phosphorus" />
+                <ScalarProperty Name="sulfur" ColumnName="sulfur" />
+                <ScalarProperty Name="iodine" ColumnName="iodine" />
+                <ScalarProperty Name="bromine" ColumnName="bromine" />
+                <ScalarProperty Name="oxygen" ColumnName="oxygen" />
+                <ScalarProperty Name="nitrogen" ColumnName="nitrogen" />
+                <ScalarProperty Name="hydrogen" ColumnName="hydrogen" />
+                <ScalarProperty Name="carbon" ColumnName="carbon" />
+                <ScalarProperty Name="fragmentMsCompound" ColumnName="fragmentMsCompound" />
+                <ScalarProperty Name="compoundBaseMass" ColumnName="compoundBaseMass" />
+                <ScalarProperty Name="molecularWeight" ColumnName="molecularWeight" />
+                <ScalarProperty Name="molecularFormula" ColumnName="molecularFormula" />
+                <ScalarProperty Name="compoundName" ColumnName="compoundName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Isotopes">
+            <EntityTypeMapping TypeName="FirmsChemDBModel.Isotope">
+              <MappingFragment StoreEntitySet="Isotope">
+                <ScalarProperty Name="atomSymbol" ColumnName="atomSymbol" />
+                <ScalarProperty Name="abundance" ColumnName="abundance" />
+                <ScalarProperty Name="atomMass" ColumnName="atomMass" />
+                <ScalarProperty Name="isotopeNumber" ColumnName="isotopeNumber" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="isotopeId" ColumnName="isotopeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tables">
+            <EntityTypeMapping TypeName="FirmsChemDBModel.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="abundance" ColumnName="abundance" />
+                <ScalarProperty Name="atomMass" ColumnName="atomMass" />
+                <ScalarProperty Name="isotopeNumber" ColumnName="isotopeNumber" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="isotopeId" ColumnName="isotopeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

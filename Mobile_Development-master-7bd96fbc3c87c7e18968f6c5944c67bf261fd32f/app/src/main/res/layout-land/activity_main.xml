@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/welcome_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:gravity="center"
+        android:text="@string/welcome"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/player1_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:text="@string/player1"
+        android:textColor="@android:color/black"
+        android:textColorLink="@android:color/holo_blue_dark"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/player1_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="200dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="-12dp"
+        android:layout_weight="0.1"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:inputType="text"
+        android:labelFor="@id/player1_name"
+        android:maxLength="20"
+        android:maxLines="1"
+        android:text="@string/player1"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/player2_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:text="@string/player2"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/player2_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="200dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="-12dp"
+        android:layout_weight="0.1"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:inputType="text"
+        android:labelFor="@id/player2_name"
+        android:maxLength="20"
+        android:maxLines="1"
+        android:text="@string/player2"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textColorLink="@android:color/holo_blue_dark"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/rounds_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:text="@string/rounds"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/rounds_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="200dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="-12dp"
+        android:layout_weight="0.1"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:inputType="number"
+        android:labelFor="@id/rounds_num"
+        android:maxLength="7"
+        android:maxLines="1"
+        android:text="@string/rounds"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textColorLink="@android:color/holo_blue_dark"
+        android:textSize="16sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1">
+
+        <Button
+            android:id="@+id/start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:onClick="onStartGame"
+            android:text="@string/start"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+</LinearLayout>

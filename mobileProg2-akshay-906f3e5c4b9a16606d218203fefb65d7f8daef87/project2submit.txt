@@ -1,0 +1,36 @@
+
+Project 2 Grading
+	
+firebase login: mobdevsdsmt@gmail.com
+firebase password: collegeisexpensive
+
+******************************************************************************
+PLEASE USE GITLAB BRANCH "akshay" NOT MASTER
+******************************************************************************
+
+Group Name:  Coughlen, Singh, Toregersen
+individual assignmnets: We all contributed to each of these assignments rather than individually
+   sequencng: NA
+   upload: NA
+   download: NA
+   monitor: NA
+
+CHECKPOINT:
+Any special instructions on loggin in: username is email, password 6+ characters
+how far into the game can I get: all gameplay
+
+   Checklist:
+   __x__ The opening/login activity and the new user activity.
+   __x__ The ability to create a user
+   __x__ The ability for the user to log into the system.
+   __x__ move to the wait activity
+   __x__ GitLab is up and I have access
+   __x__ Firebase database structure (attached document)
+   __NA__ monitor activity layout prototyped
+
+FINAL:
+   Please list any tasks not completed:
+	Active end may need to be pressed a few times to close the app
+	Passive timer is partially implemented but does not functionally do anything at this time
+	Restart
+	Final activity - our round counter gets us to call the final activity but when we call startActivity() it doesn't seem to start. I've tried debugging and the FinalScore activity never starts up even though it's called
